@@ -20,7 +20,8 @@
             "backgroundColor": "#222222"
           }
         }
-      ]
+      ],
+      "expo-video"
     ],
     "ios": {
       "supportsTablet": true,
