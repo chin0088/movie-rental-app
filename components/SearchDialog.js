@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Dialog, Input } from '@rneui/themed';
-import { Text, View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
+import { styled } from '../theme/theme';
 
 //code ref: https://reactnativeelements.com/docs/components/dialog
 
@@ -37,23 +38,14 @@ return (
         />
         <Button title="Search"
         onPress={handleSearch}
+        buttonStyle={styled.btn}
+        titleStyle={styled.btnTitle}
         />
       <Button title="Cancel" 
-      onPress={onClose}/>
+      onPress={onClose}
+      buttonStyle={styled.btn}
+      titleStyle={styled.btnTitle}/>
     </Dialog>
   </View>
 );
 };
-
-const styles = StyleSheet.create({
-button: {
-  borderRadius: 10,
-  width: 220,
-  margin: 20,
-},
-buttonContainer: {
-  margin: 20,
-  justifyContent: 'center',
-  alignItems: 'center',
-},
-});

@@ -1,11 +1,10 @@
 import { View, Text, FlatList, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { FAB } from "@rneui/themed";
 import { useSearch } from '../context/Search';
 import { useRented } from '../context/Rented';
 import Card from '../components/Card';
 import SearchDialog from '../components/SearchDialog';
-import theme from '../theme/theme';
+import { theme, styled } from "../theme/theme";
 import { useState } from "react";
 import RentalDialog from "../components/RentalDialog";
 
@@ -32,8 +31,9 @@ export default function HomeScreen({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
-            <Text>Home</Text>
+        <View style={[styled.container, styled.homePosition]}>
+            <Text style={styled.headerText}>Welcome to Movie Rental!</Text>
+            <Text style={styled.contentText}>Tap the Search icon and search movies</Text>
             <FlatList
             data={movies}
             keyExtractor={ (item) => item.id.toString()}
@@ -42,15 +42,14 @@ export default function HomeScreen({ navigation }) {
                 movie={item}
                 isRented={false}
                 toRent={toRent}
-
                 />
             )}
             />
 
             <FAB
-            style={styles.fab}
-            icon={{ name: 'search', color: 'white'}}
-            color="#944654"
+            style={styled.fab}
+            icon={styled.FabIcon}
+            color={theme.lightTheme.primary}
             placement="right"
             onPress={()=> setSearchOpen(true)}
             />
@@ -73,21 +72,26 @@ export default function HomeScreen({ navigation }) {
 
 }
 
-const styles = StyleSheet.create(
-    {
-        container: {
-            flex: 1,
-            position: 'relative',
-        },
-        list: {
-            flex: 1,
-            paddingBottom: 80,
-        },
-        fab: {
-            margin: 16,
-            bottom: 16,
-            position: 'absolute',
-            right: 0,
-        }
-    }
-);
+// const styles = StyleSheet.create(
+//     {
+//         container: {
+//             flex: 1,
+//             backgroundColor: '#fff',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//         },
+//         homePosition: {
+//             position: 'relative',
+//         },
+//         list: {
+//             flex: 1,
+//             paddingBottom: 80,
+//         },
+//         fab: {
+//             margin: 16,
+//             bottom: 16,
+//             position: 'absolute',
+//             right: 0,
+//         }
+//     }
+// );

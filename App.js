@@ -6,9 +6,9 @@ import { MyRentedProvider } from './context/Rented';
 import HomeScreen from './screens/HomeScreen';
 import RentedScreen from './screens/RentedScreen';
 import WatchScreen from './screens/WatchScreen';
-import { theme } from './theme/theme';
+import { theme, navigationStyle, styled } from './theme/theme';
 import { Text, Pressable } from 'react-native';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -18,14 +18,17 @@ export default function App() {
       <MySearchProvider>
         <MyRentedProvider>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
+            <Stack.Navigator 
+            initialRouteName="Home"
+            screenOptions={navigationStyle}
+            >
               <Stack.Screen name="Home" 
               component={HomeScreen} 
               options={({ navigation }) => ({
                 title: 'Home',
                 headerRight: () => (
                   <Pressable onPress={() => navigation.navigate('Rented')}>
-                    <Text>Rented</Text>
+                    <Text style={styled.navBarText}>Rented</Text>
                   </Pressable>
                 ),
               })}

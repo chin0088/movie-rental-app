@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View,StatusBar } from 'react-native';
 import { useDeviceOrientation } from '@react-native-community/hooks';
-import { useEffect, useState, useRef } from 'react';
-import { Button, Input } from '@rneui/themed';
+import { useEffect, useRef } from 'react';
+import { Button } from '@rneui/themed';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { useRented } from '../context/Rented';
+import { theme, styled } from '../theme/theme';
 
 const videoSrc = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
 export default function WatchScreen({ navigation, route}){
     const orientation = useDeviceOrientation();
-    const [orient, setOrient] = useState('portrait');
     const { removeRentedMovie } = useRented();
     const { movieId, movieTitle } = route.params;
   
@@ -21,15 +21,19 @@ export default function WatchScreen({ navigation, route}){
       });
       const vidview = useRef(null);
 
-    useEffect(() => {
-    setOrient(orientation);
-    //update a state variable to rerender the component
 
+    useEffect(() => {
+
+    console.log('Current orientation: ', orientation);
+    
     if (orientation === 'landscape') {
+      console.log('enter to landscape');
+      
       //let's full screen the video
       vidview.current.enterFullscreen();
     } else {
-      // if(vidview.current.isFullscreen)
+      // Tried different ways but still not able to exit fullscreen when returning to portrait >_<
+      // console.log('enter to portrait');
       // vidview.current.exitFullscreen();
     }
   }, [orientation]);
@@ -44,40 +48,25 @@ export default function WatchScreen({ navigation, route}){
   }
 
     return(
-        <View style={styles.container}>
-            <Text>Now Playing</Text>
-            <Text>{movieTitle}</Text>
+        <View style={styled.container}>
+            <Text style={styled.contentText}>Now Playing</Text>
+            <Text style={styled.headerText}>{movieTitle}</Text>
   
-        <VideoView ref={vidview} allowsFullscreen player={player} style={styles.video} />
+        <VideoView ref={vidview} allowsFullscreen player={player} style={styled.video} />
 
         {!player.isPlaying && 
         (            
-            <>
+            <View style={styled.btnContainer}>
                 <Button
                     title="Mark as Watch"
                     onPress={markWatched}
-                    icon={{
-                        name: 'check',
-                        type: 'font-awesome',
-                        size: 15,
-                        color: 'white',
-                    }}
+                    icon={{...styled.markWatchedIcon, ...styled.btnIcon}}
                     iconLeft
-                    iconContainerStyle={{ marginLeft: 10 }}
-                    titleStyle={{ fontWeight: '700' }}
-                    buttonStyle={{
-                        backgroundColor: '#944654',
-                        borderColor: 'transparent',
-                        borderWidth: 0,
-                        borderRadius: 5,
-                    }}
-                    containerStyle={{
-                        width: 200,
-                        marginHorizontal: 50,
-                        marginVertical: 10,
-                    }}
+                    iconContainerStyle={styled.btnIconContainer}
+                    titleStyle={styled.btnTitle}
+                    buttonStyle={styled.btn}
                 />
-            </>
+            </View>
             )
         }
 
@@ -87,15 +76,15 @@ export default function WatchScreen({ navigation, route}){
     )
 }
 
-const styles = StyleSheet.create({
-    video: {
-      width: 350,
-      height: 275,
-    },
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
+// const styles = StyleSheet.create({
+//     video: {
+//       width: 350,
+//       height: 275,
+//     },
+//     container: {
+//       flex: 1,
+//       backgroundColor: '#fff',
+//       alignItems: 'center',
+//       justifyContent: 'center',
+//     },
+//   });
