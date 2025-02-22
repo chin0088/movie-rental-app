@@ -1,4 +1,3 @@
-import { Dialog } from "@rneui/base";
 import { StyleSheet } from "react-native";
 
 
@@ -62,11 +61,6 @@ export const styled = StyleSheet.create({
         marginTop: 2,
         marginBottom: 2,
     },
-    // btnContainer: {
-    //     width: 200,
-    //     marginHorizontal: 50,
-    //     marginVertical: 10,
-    // },
     btnIcon: {
         type: 'font-awesome',
         size: 15,

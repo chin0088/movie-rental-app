@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { useRented } from '../context/Rented';
 import Card from '../components/Card';
 import { styled } from '../theme/theme';
@@ -39,16 +39,3 @@ export default function RentedScreen({ navigation }) {
         </View>
     )
 }
-
-// const styles = StyleSheet.create(
-//     {
-//         container: {
-//             flex: 1,
-//             position: 'relative',
-//         },
-//         list: {
-//             flex: 1,
-//             paddingBottom: 80,
-//         }
-//     }
-// );

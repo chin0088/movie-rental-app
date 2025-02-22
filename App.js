@@ -6,7 +6,7 @@ import { MyRentedProvider } from './context/Rented';
 import HomeScreen from './screens/HomeScreen';
 import RentedScreen from './screens/RentedScreen';
 import WatchScreen from './screens/WatchScreen';
-import { theme, navigationStyle, styled } from './theme/theme';
+import { navigationStyle, styled } from './theme/theme';
 import { Text, Pressable } from 'react-native';
 
 
@@ -50,12 +50,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

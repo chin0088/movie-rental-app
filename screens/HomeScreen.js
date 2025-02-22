@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { FAB } from "@rneui/themed";
 import { useSearch } from '../context/Search';
 import { useRented } from '../context/Rented';
@@ -14,7 +14,6 @@ export default function HomeScreen({ navigation }) {
     const { addMovieToRented } = useRented();
 
     const [searchOpen, setSearchOpen] = useState(false);
-    // const [searchKeyword, setSearchKeyword] = useState('');
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [rentDialogOpen, setRentDialogOpen] = useState(false);
 
@@ -71,27 +70,3 @@ export default function HomeScreen({ navigation }) {
     )
 
 }
-
-// const styles = StyleSheet.create(
-//     {
-//         container: {
-//             flex: 1,
-//             backgroundColor: '#fff',
-//             alignItems: 'center',
-//             justifyContent: 'center',
-//         },
-//         homePosition: {
-//             position: 'relative',
-//         },
-//         list: {
-//             flex: 1,
-//             paddingBottom: 80,
-//         },
-//         fab: {
-//             margin: 16,
-//             bottom: 16,
-//             position: 'absolute',
-//             right: 0,
-//         }
-//     }
-// );

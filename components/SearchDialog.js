@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Dialog, Input } from '@rneui/themed';
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, Alert } from 'react-native';
 import { styled } from '../theme/theme';
 
 //code ref: https://reactnativeelements.com/docs/components/dialog

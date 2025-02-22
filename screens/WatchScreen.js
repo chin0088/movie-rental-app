@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View,StatusBar } from 'react-native';
+import { Text, View,StatusBar } from 'react-native';
 import { useDeviceOrientation } from '@react-native-community/hooks';
 import { useEffect, useRef } from 'react';
 import { Button } from '@rneui/themed';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { useRented } from '../context/Rented';
-import { theme, styled } from '../theme/theme';
+import { styled } from '../theme/theme';
 
 const videoSrc = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
@@ -75,16 +75,3 @@ export default function WatchScreen({ navigation, route}){
       </View>  
     )
 }
-
-// const styles = StyleSheet.create({
-//     video: {
-//       width: 350,
-//       height: 275,
-//     },
-//     container: {
-//       flex: 1,
-//       backgroundColor: '#fff',
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//     },
-//   });
